@@ -4,13 +4,13 @@ Python
 
 - Python Installation
 - Introduction to Python
-- Running a Python Scripts
-- Editors & IDE
-- Structure and Syntax
+- Data Structure and Syntax
 - Variables
 - Control Statements
 - Looping Statements
 - Functions
+- Running a Python Scripts
+- Editors & IDE
 
 Python objected Programming
 
