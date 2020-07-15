@@ -9,8 +9,6 @@ Python
 - Control Statements
 - Looping Statements
 - Functions
-- Running a Python Scripts
-- Editors & IDE
 
 Python objected Programming
 
@@ -18,7 +16,11 @@ Python objected Programming
 - Attributes & Methods
 - Inheritance
 - Modules & Packages
-- Collections
+
+**Note**: this part will include
+
+- Running a Python Scripts
+- Editors & IDE
 
 Introduction to Django Framework
 
