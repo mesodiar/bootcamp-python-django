@@ -2,7 +2,6 @@
 
 Python
 
-- Python Installation
 - Introduction to Python
 - Data Structure and Syntax
 - Variables
@@ -19,6 +18,7 @@ Python objected Programming
 
 **Note**: this part will include
 
+- Python Installation
 - Running a Python Scripts
 - Editors & IDE
 
