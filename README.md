@@ -24,8 +24,14 @@ Python objected Programming
 
 Introduction to Django Framework
 
-- Django Installation
-- Web Framework & MVC Pattern
-- Creating a New Project
-- Creating Basic Django App and Views
+- Intro to Web Framework & MVT Pattern
 - Understanding the Project Structure
+- Virtual Environment
+- Django Installation
+- Creating a New Project
+- Models
+- Urls
+- Views
+- Template
+- Bootstrap
+- Form
