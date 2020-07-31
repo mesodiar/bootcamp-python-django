@@ -2,7 +2,7 @@
 
 
 
-![TA project-37](/Users/mesodiar/Downloads/TA project-37.jpg)
+
 
 # สารบัญ
 
@@ -242,7 +242,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('stories/', include('stories.urls'))
+    path('', include('stories.urls'))
 ]
 
 ```
@@ -305,7 +305,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('<int:story_id>/', views.detail, name='detail'), ## add this line
+    path('stories/<int:story_id>/', views.detail, name='detail'), ## add this line
 ]
 ```
 
