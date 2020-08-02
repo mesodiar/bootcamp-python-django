@@ -50,7 +50,7 @@
 
  หรือ เข้าตรงๆทาง https://github.com/new 
 
-![Screen Shot 2563-07-30 at 16.20.28](./attachments/Screen Shot 2563-07-30 at 16.20.28.png)
+![Screen Shot 2563-07-30 at 16.20.28](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-30 at 16.20.28.png)
 
 
 
@@ -58,11 +58,11 @@
 
 ขั้นตอนนี้จะกดสร้าง **README.md** และ **gitignore** เป็น Python ด้วย
 
-![Screen Shot 2563-07-30 at 16.21.48](./attachments/Screen Shot 2563-07-30 at 16.21.48.png)
+![Screen Shot 2563-07-30 at 16.21.48](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-30 at 16.21.48.png)
 
 
 
-![Screen Shot 2563-07-30 at 16.22.44](./attachments/Screen Shot 2563-07-30 at 16.22.44.png)
+![Screen Shot 2563-07-30 at 16.22.44](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-30 at 16.22.44.png)
 
 
 
@@ -76,7 +76,7 @@
 
 เราจะพบว่ามี folder ชื่อ `medium-test` เกิดขึ้น และมีไฟล์ README.md ข้างใน
 
-![Screen Shot 2563-07-30 at 16.25.11](./attachments/Screen Shot 2563-07-30 at 16.25.11.png)
+![Screen Shot 2563-07-30 at 16.25.11](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-30 at 16.25.11.png)
 
 
 
@@ -99,7 +99,7 @@ pipenv install django
 python -m pipenv install django
 ```
 
-![Screen Shot 2563-07-30 at 16.26.50](./attachments/Screen Shot 2563-07-30 at 16.26.50.png)
+![Screen Shot 2563-07-30 at 16.26.50](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-30 at 16.26.50.png)
 
 จะได้ไฟล์ Pipfile กับ Pipfile.lock
 
@@ -235,7 +235,7 @@ def index(request):
 
 
 
-![Screen Shot 2563-07-17 at 09.41.07](./attachments/Screen Shot 2563-07-17 at 09.41.07.png)
+![Screen Shot 2563-07-17 at 09.41.07](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 09.41.07.png)
 
 
 
@@ -323,12 +323,12 @@ python manage.py shell
 
 
 
-![Screen Shot 2563-07-17 at 11.11.29](./attachments/Screen Shot 2563-07-17 at 11.11.29.png)
+![Screen Shot 2563-07-17 at 11.11.29](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 11.11.29.png)
 
 เราจะลอง `Story.objects.get(id=1)` และลอง `Story.objects.get(id=2)` ดู
 จะเห็นว่าตอนนี้เรามีแค่ Story ที่ id 1 เท่านั้น
 
-![Screen Shot 2563-07-17 at 11.13.17](./attachments/Screen Shot 2563-07-17 at 11.13.17.png)
+![Screen Shot 2563-07-17 at 11.13.17](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 11.13.17.png)
 
 
 
@@ -368,7 +368,7 @@ def detail(request, story_id):
 
 
 
-![Screen Shot 2563-07-17 at 11.07.40](./attachments/Screen Shot 2563-07-17 at 11.07.40.png)
+![Screen Shot 2563-07-17 at 11.07.40](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 11.07.40.png)
 
 
 
@@ -394,7 +394,7 @@ def detail(request, story_id):
 
 
 
-![Screen Shot 2563-07-17 at 11.15.10](./attachments/Screen Shot 2563-07-17 at 11.15.10.png)
+![Screen Shot 2563-07-17 at 11.15.10](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 11.15.10.png)
 
 
 
@@ -450,7 +450,7 @@ def detail(request, story_id):
 
 คราวนี้เราก็จะได้หน้า story แรกมาอย่างสวยงามและไม่ติด error อีกต่อไป
 
-![Screen Shot 2563-07-17 at 11.52.10](./attachments/Screen Shot 2563-07-17 at 11.52.10.png)
+![Screen Shot 2563-07-17 at 11.52.10](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 11.52.10.png)
 
 
 
@@ -466,7 +466,7 @@ def detail(request, story_id):
 
 คราวนี้เราก็จะได้ story มาอย่างสวยงามและครบครัน
 
-![Screen Shot 2563-07-17 at 12.05.52](./attachments/Screen Shot 2563-07-17 at 12.05.52.png)
+![Screen Shot 2563-07-17 at 12.05.52](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 12.05.52.png)
 
 
 
@@ -513,7 +513,7 @@ def index(request):
 
 
 
-![TA project-38](./attachments/TA project-38.jpg)
+![TA project-38](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/TA project-38.jpg)
 
 
 
@@ -564,7 +564,7 @@ def index(request):
 
 เราจะเห็นว่าหน้าเว็บไซต์เราสวยขึ้น
 
-![Screen Shot 2563-07-17 at 15.00.10](./attachments/Screen Shot 2563-07-17 at 15.00.10.png)
+![Screen Shot 2563-07-17 at 15.00.10](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 15.00.10.png)
 
 #### 4.2 เพิ่มเอกลักษณ์ของเว็บโดยใส่ css ที่เราทำขึ้นเอง 💄
 
@@ -596,13 +596,13 @@ STATICFILES_DIRS = [
 
 คราวนี้ถึงไม่ 404 แล้ว
 
-![Screen Shot 2563-07-17 at 15.05.56](./attachments/Screen Shot 2563-07-17 at 15.05.56.png)
+![Screen Shot 2563-07-17 at 15.05.56](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 15.05.56.png)
 
 
 
 
 
-![Screen Shot 2563-07-17 at 15.06.17](./attachments/Screen Shot 2563-07-17 at 15.06.17.png)
+![Screen Shot 2563-07-17 at 15.06.17](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 15.06.17.png)
 
 ---
 
