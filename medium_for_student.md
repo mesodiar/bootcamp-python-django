@@ -50,7 +50,9 @@
 
  หรือ เข้าตรงๆทาง https://github.com/new 
 
-![Screen Shot 2563-07-30 at 16.20.28](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-30 at 16.20.28.png)
+![Screen Shot 2563-07-30 at 16.20.28](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-30%20at%2016.20.28.png)
+
+
 
 
 
