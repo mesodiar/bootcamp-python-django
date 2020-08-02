@@ -42,9 +42,9 @@
 
 ---
 
+# 1. สร้างที่เก็บโค้ดใน Github Repository ของโปรเจคกัน 🐙
 
 
-###  1. สร้างที่เก็บโค้ดใน Github Repository ของโปรเจคกัน 🐙
 
 สร้าง new repository โดยเราจะเข้าไปที่ www.github.com และกดปุ่ม new เพื่อสร้าง repository
 
@@ -60,11 +60,11 @@
 
 ขั้นตอนนี้จะกดสร้าง **README.md** และ **gitignore** เป็น Python ด้วย
 
-![Screen Shot 2563-07-30 at 16.21.48](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-30 at 16.21.48.png)
+![Screen Shot 2563-07-30 at 16.21.48](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-30%20at%2016.21.48.png)
 
 
 
-![Screen Shot 2563-07-30 at 16.22.44](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-30 at 16.22.44.png)
+![Screen Shot 2563-07-30 at 16.22.44](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-30%20at%2016.22.44.png)
 
 
 
@@ -78,7 +78,7 @@
 
 เราจะพบว่ามี folder ชื่อ `medium-test` เกิดขึ้น และมีไฟล์ README.md ข้างใน
 
-![Screen Shot 2563-07-30 at 16.25.11](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-30 at 16.25.11.png)
+![Screen Shot 2563-07-30 at 16.25.11](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-30%20at%2016.25.11.png)
 
 
 
@@ -88,7 +88,7 @@
 
 
 
-## 2. ติดตั้ง Django 🤠
+# 2. ติดตั้ง Django 🤠
 
 
 
@@ -101,7 +101,7 @@ pipenv install django
 python -m pipenv install django
 ```
 
-![Screen Shot 2563-07-30 at 16.26.50](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-30 at 16.26.50.png)
+![Screen Shot 2563-07-30 at 16.26.50](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-30%20at%2016.26.50.png)
 
 จะได้ไฟล์ Pipfile กับ Pipfile.lock
 
@@ -170,9 +170,7 @@ python manage.py createsuperuser
 
 
 
-###  3. เริ่มต้นสร้างแอพ 🎉
-
-
+# 3. เริ่มต้นสร้างแอพ 🎉
 
 เราจะสร้างแอพกันด้วยคำสั่ง
 
@@ -188,7 +186,7 @@ python manage.py startapp stories
 
 
 
-#### 3.1 สร้างปลายทางที่จะไป ด้วย urls.py 📫
+## 3.1 สร้างปลายทางที่จะไป ด้วย urls.py 📫
 
 
 
@@ -219,7 +217,9 @@ urlpatterns = [
 
 
 
-#### 3.2 ศูนย์รวมการประมวลผลที่ views.py 🧠
+## 3.2 ศูนย์รวมการประมวลผลที่ views.py 🧠
+
+
 
 
 
@@ -237,13 +237,13 @@ def index(request):
 
 
 
-![Screen Shot 2563-07-17 at 09.41.07](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 09.41.07.png)
+![Screen Shot 2563-07-17 at 09.41.07](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2009.41.07.png)
 
 
 
------
 
-#### 3.3 เริ่มต้นสร้างแผนผังข้อมูล Models.py 🛢
+
+## 3.3 เริ่มต้นสร้างแผนผังข้อมูล Models.py 🛢
 
 
 
@@ -301,7 +301,7 @@ python manage.py migrate
 
 
 
-#### 3.4 การ query ดึงข้อมูลมาดูกันหน่อย 🔍
+## 3.4 การ query ดึงข้อมูลมาดูกันหน่อย 🔍
 
 
 
@@ -309,7 +309,7 @@ python manage.py migrate
 
 ให้เราไปสร้างที่ localhost:8000/admin เพื่อทำการสร้างข้อมูล story เบื้องต้นก่อน
 
-![Screen Shot 2563-07-17 at 10.56.48](/Users/mesodiar/Library/Group Containers/9K33E3U3T4.net.shinyfrog.bear/Application Data/Local Files/Note Images/7C88C4CD-1488-475B-B3B2-F677A98B026F-3817-00006D21FA380AED/Screen Shot 2563-07-17 at 10.56.48.png)
+![Screen Shot 2563-07-17 at 10.56.48](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2010.56.48.png)
 
 
 
@@ -325,20 +325,18 @@ python manage.py shell
 
 
 
-![Screen Shot 2563-07-17 at 11.11.29](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 11.11.29.png)
+![Screen Shot 2563-07-17 at 11.11.29](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2011.11.29.png)
 
 เราจะลอง `Story.objects.get(id=1)` และลอง `Story.objects.get(id=2)` ดู
 จะเห็นว่าตอนนี้เรามีแค่ Story ที่ id 1 เท่านั้น
 
-![Screen Shot 2563-07-17 at 11.13.17](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 11.13.17.png)
+![Screen Shot 2563-07-17 at 11.13.17](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2011.13.17.png)
 
 
 
------
-
-#### 3.5 สร้างหน้ารายละเอียดของ Story กัน (Story Detail) 📖
 
 
+## 3.5 สร้างหน้ารายละเอียดของ Story กัน (Story Detail) 📖
 
 คราวนี้เรากลับมา stories/urls.py อีกครั้ง เพื่อสร้าง path ไปยังหน้ารายละเอียดของ story (story detail)
 
@@ -368,9 +366,7 @@ def detail(request, story_id):
 
 
 
-
-
-![Screen Shot 2563-07-17 at 11.07.40](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 11.07.40.png)
+![Screen Shot 2563-07-17 at 11.07.40](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2011.07.40.png)
 
 
 
@@ -396,7 +392,7 @@ def detail(request, story_id):
 
 
 
-![Screen Shot 2563-07-17 at 11.15.10](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 11.15.10.png)
+![Screen Shot 2563-07-17 at 11.15.10](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2011.15.10.png)
 
 
 
@@ -411,7 +407,9 @@ def detail(request, story_id):
 
 
 
-#### 3.6 จัดระเบียบการแสดงผลด้วย Template กัน ✨
+## 3.6 จัดระเบียบการแสดงผลด้วย Template กัน ✨
+
+
 
 ตอนนี้หน้าบ้านเรามีแค่ `This is your story detail of {story_id}` แต่ในความเป็นจริงแล้ว เว็บไซต์เราไม่ได้มีการแสดงแค่นี้ มันจะแสดงสิ่งต่างๆเยอะมากและนั่นก็คือ HTML ที่ยาวมากๆนี่เอง เราจึงต้องใช้ Template ในการจัดการแต่ละหน้าในการแสดงข้อมูลต่างๆออกมา
 
@@ -429,13 +427,13 @@ stories/templates/stories/detail.html
 
 โดยเราจะใช้ render()  ในการบอกว่าเราจะใช้ template ที่ชื่อว่า detail.html
 
-![Screen Shot 2563-07-17 at 11.39.55](/Users/mesodiar/Library/Group Containers/9K33E3U3T4.net.shinyfrog.bear/Application Data/Local Files/Note Images/107E531B-BB51-4FC2-8A33-D58DFC0989D0-3817-00006F774A50450D/Screen Shot 2563-07-17 at 11.39.55.png)
+![Screen Shot 2563-07-17 at 11.39.55](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2011.39.55.png)
 
 
 
 แต่เมื่อเรากลับมาที่เว็บของเรา จะพบว่าเกิด error ขึ้น
 
-![Screen Shot 2563-07-17 at 11.50.58](/Users/mesodiar/Library/Group Containers/9K33E3U3T4.net.shinyfrog.bear/Application Data/Local Files/Note Images/94CF3313-744A-416A-8F05-B2F97A885EDD-3817-00007011596E4354/Screen Shot 2563-07-17 at 11.50.58.png)
+![Screen Shot 2563-07-17 at 11.50.58](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2011.50.58.png)
 
 
 
@@ -452,7 +450,7 @@ def detail(request, story_id):
 
 คราวนี้เราก็จะได้หน้า story แรกมาอย่างสวยงามและไม่ติด error อีกต่อไป
 
-![Screen Shot 2563-07-17 at 11.52.10](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 11.52.10.png)
+![Screen Shot 2563-07-17 at 11.52.10](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2011.52.10.png)
 
 
 
@@ -468,19 +466,13 @@ def detail(request, story_id):
 
 คราวนี้เราก็จะได้ story มาอย่างสวยงามและครบครัน
 
-![Screen Shot 2563-07-17 at 12.05.52](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 12.05.52.png)
+![Screen Shot 2563-07-17 at 12.05.52](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2012.05.52.png)
 
 
 
 
 
-
-
----
-
-#### 3.7 มาทำให้หน้าเว็บเราเปลี่ยนแปลงข้อมูลโดยอัตโนมัติ (dynamic) 🦾
-
-
+## 3.7 มาทำให้หน้าเว็บเราเปลี่ยนแปลงข้อมูลโดยอัตโนมัติ (dynamic) 🦾
 
 
 เราจะกลับมาที่ index.html คราวนี้เราอยากให้หน้านี้มีการแสดงลิ้งค์ของบทความทั้งหมด
@@ -511,15 +503,11 @@ def index(request):
 
 
 
-### ภาพรวม MVT ตอนนี้
+## ภาพรวม MVT ตอนนี้
 
 
 
-![TA project-38](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/TA project-38.jpg)
-
-
-
-
+![TA project-38](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/TA%20project-38.jpg)
 
 
 
@@ -530,11 +518,13 @@ def index(request):
 
 
 
-## 4. เพิ่มส่วนต่างๆให้กับเว็บเรา
+# 4. เพิ่มส่วนต่างๆให้กับเว็บเรา
 
 
 
-#### 4.1 เพิ่มความสวยงามด้วย Bootstrap ✨
+## 4.1 เพิ่มความสวยงามด้วย Bootstrap ✨
+
+
 
 เราจะติดตั้ง Bootstrap ให้เว็บไซต์เราโดยเราจะใส่ code ด้านล่างในไฟล์ details.html
 
@@ -566,9 +556,13 @@ def index(request):
 
 เราจะเห็นว่าหน้าเว็บไซต์เราสวยขึ้น
 
-![Screen Shot 2563-07-17 at 15.00.10](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 15.00.10.png)
+![Screen Shot 2563-07-17 at 15.00.10](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2015.00.10.png)
 
-#### 4.2 เพิ่มเอกลักษณ์ของเว็บโดยใส่ css ที่เราทำขึ้นเอง 💄
+
+
+## 4.2 เพิ่มเอกลักษณ์ของเว็บโดยใส่ css ที่เราทำขึ้นเอง 💄
+
+
 
 
 
@@ -598,17 +592,21 @@ STATICFILES_DIRS = [
 
 คราวนี้ถึงไม่ 404 แล้ว
 
-![Screen Shot 2563-07-17 at 15.05.56](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 15.05.56.png)
+![Screen Shot 2563-07-17 at 15.05.56](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2015.05.56.png)
 
 
 
 
 
-![Screen Shot 2563-07-17 at 15.06.17](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen Shot 2563-07-17 at 15.06.17.png)
 
----
 
-#### 4.3 ติดตั้ง Fonts กันเถอะ 🅰️
+![Screen Shot 2563-07-17 at 15.06.17](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2015.06.17.png)
+
+#### 
+
+## 4.3 ติดตั้ง Fonts กันเถอะ 🅰️
+
+
 
 
 
@@ -631,13 +629,9 @@ h1 {
 
 
 
----
 
 
-
-#### 4.4 แผนผังข้อมูลที่เปลี่ยนไป (models) 🛢
-
-
+## 4.4 แผนผังข้อมูลที่เปลี่ยนไป (models) 🛢
 
 อยากเพิ่มรูปภาพเข้ามาประกอบใน story เราต้องแก้ที่แผนผังข้อมูลใน models.py
 
@@ -703,7 +697,7 @@ Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac tu
 
 
 
-#### 4.5 เพิ่มประสิทธิภาพการแสดงผลด้วย {% block content %} 👆
+## 4.5 เพิ่มประสิทธิภาพการแสดงผลด้วย {% block content %} 👆
 
 
 
@@ -726,7 +720,9 @@ detail.html
 
 ---
 
-#### 4.6 เพิ่ม story ด้วยการกรอกแบบฟอร์ม (Forms.py) 📄
+#### 
+
+## 4.6 เพิ่ม story ด้วยการกรอกแบบฟอร์ม (Forms.py) 📄
 
 
 
