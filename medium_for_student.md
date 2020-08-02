@@ -1,9 +1,5 @@
 
 
-
-
-
-
 # สารบัญ
 
 1. สร้างที่เก็บโค้ดใน Github Repository ของโปรเจคกัน 🐙
@@ -22,11 +18,13 @@
 
    3.4 การ query ดึงข้อมูลมาดูกันหน่อย 🔍
 
-   3.5 จัดระเบียบการแสดงผลด้วย Template กัน ✨
+   3.5 สร้างหน้ารายละเอียดของ Story กัน (Story Detail) 📖
 
-   3.6 มาทำให้หน้าเว็บเราเปลี่ยนแปลงข้อมูลโดยอัตโนมัติ (dynamic) 🦾
+   3.6 จัดระเบียบการแสดงผลด้วย Template กัน ✨
 
-4. เพิ่มส่วนต่างๆให้กับเว็บเรา
+   3.7 มาทำให้หน้าเว็บเราเปลี่ยนแปลงข้อมูลโดยอัตโนมัติ (dynamic) 🦾
+
+   1. เพิ่มส่วนต่างๆให้กับเว็บเรา
 
    4.1 เพิ่มความสวยงามด้วย Bootstrap ✨
 
@@ -48,11 +46,11 @@
 
 ###  1. สร้างที่เก็บโค้ดใน Github Repository ของโปรเจคกัน 🐙
 
-สร้าง new reposioty โดยเราจะเข้าไปที่ www.github.com และกดปุ่ม new เพื่อสร้าง repository
+สร้าง new repository โดยเราจะเข้าไปที่ www.github.com และกดปุ่ม new เพื่อสร้าง repository
 
  หรือ เข้าตรงๆทาง https://github.com/new 
 
-![Screen Shot 2563-07-30 at 16.20.28](/Users/mesodiar/Desktop/Screen Shot 2563-07-30 at 16.20.28.png)
+![Screen Shot 2563-07-30 at 16.20.28](./attachments/Screen Shot 2563-07-30 at 16.20.28.png)
 
 
 
@@ -60,11 +58,11 @@
 
 ขั้นตอนนี้จะกดสร้าง **README.md** และ **gitignore** เป็น Python ด้วย
 
-![Screen Shot 2563-07-30 at 16.21.48](/Users/mesodiar/Library/Application Support/typora-user-images/Screen Shot 2563-07-30 at 16.21.48.png)
+![Screen Shot 2563-07-30 at 16.21.48](./attachments/Screen Shot 2563-07-30 at 16.21.48.png)
 
 
 
-![Screen Shot 2563-07-30 at 16.22.44](/Users/mesodiar/Desktop/Screen Shot 2563-07-30 at 16.22.44.png)
+![Screen Shot 2563-07-30 at 16.22.44](./attachments/Screen Shot 2563-07-30 at 16.22.44.png)
 
 
 
@@ -78,7 +76,7 @@
 
 เราจะพบว่ามี folder ชื่อ `medium-test` เกิดขึ้น และมีไฟล์ README.md ข้างใน
 
-![Screen Shot 2563-07-30 at 16.25.11](/Users/mesodiar/Library/Application Support/typora-user-images/Screen Shot 2563-07-30 at 16.25.11.png)
+![Screen Shot 2563-07-30 at 16.25.11](./attachments/Screen Shot 2563-07-30 at 16.25.11.png)
 
 
 
@@ -101,7 +99,7 @@ pipenv install django
 python -m pipenv install django
 ```
 
-![Screen Shot 2563-07-30 at 16.26.50](/Users/mesodiar/Library/Application Support/typora-user-images/Screen Shot 2563-07-30 at 16.26.50.png)
+![Screen Shot 2563-07-30 at 16.26.50](./attachments/Screen Shot 2563-07-30 at 16.26.50.png)
 
 จะได้ไฟล์ Pipfile กับ Pipfile.lock
 
@@ -184,7 +182,66 @@ python manage.py startapp stories
 
 
 
-#### 3.1 เริ่มต้นสร้างแผนผังข้อมูล Models.py 🛢
+---
+
+
+
+#### 3.1 สร้างปลายทางที่จะไป ด้วย urls.py 📫
+
+
+
+ไฟล์ medium/urls.py
+
+```python
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('stories.urls'))
+]
+
+```
+
+ไฟล์ stories/urls.py
+
+```python
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index'),
+]
+```
+
+
+
+#### 3.2 ศูนย์รวมการประมวลผลที่ views.py 🧠
+
+
+
+ไฟล์ stories/views.py
+
+```python
+from django.http import HttpResponse
+
+
+def index(request):
+    return HttpResponse("This is your story index")
+```
+
+คราวนี้ให้เราไปที่ localhost:8000/stories
+
+
+
+![Screen Shot 2563-07-17 at 09.41.07](./attachments/Screen Shot 2563-07-17 at 09.41.07.png)
+
+
+
+-----
+
+#### 3.3 เริ่มต้นสร้างแผนผังข้อมูล Models.py 🛢
 
 
 
@@ -194,7 +251,7 @@ python manage.py startapp stories
 from django.conf import settings
 from django.db import models
 
-class Stories:
+class Story(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     content = models.TextField()
@@ -230,58 +287,19 @@ python manage.py makemigrations
 
 
 
-#### 3.2 สร้างปลายทางที่จะไป ด้วย urls.py 📫
-
-
-
-ไฟล์ medium/urls.py
-
-```python
-from django.contrib import admin
-from django.urls import path, include
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('stories.urls'))
-]
+แล้วค่อยรันคำสั่ง
 
 ```
-
-ไฟล์ stories/urls.py
-
-```python
-from django.urls import path
-
-from . import views
-
-urlpatterns = [
-    path('', views.index, name='index'),
-]
+python manage.py migrate
 ```
 
 
 
-#### 3.3 ศูนย์รวมการประมวลผลที่ views.py 🧠
+---
 
 
 
-ไฟล์ stories/views.py
-
-```python
-from django.http import HttpResponse
-
-
-def index(request):
-    return HttpResponse("This is your story index")
-```
-
-คราวนี้ให้เราไปที่ localhost:8000/stories
-
-![Screen Shot 2563-07-17 at 09.41.07](/var/folders/4l/ddh6lt6x139f548hq71w4m2m0000gn/T/net.shinyfrog.bear/BearTemp.gh7M6B/Screen Shot 2563-07-17 at 09.41.07.png)
-
-
-
-
+#### 3.4 การ query ดึงข้อมูลมาดูกันหน่อย 🔍
 
 
 
@@ -289,9 +307,34 @@ def index(request):
 
 ให้เราไปสร้างที่ localhost:8000/admin เพื่อทำการสร้างข้อมูล story เบื้องต้นก่อน
 
-![Screen Shot 2563-07-17 at 10.56.48](/var/folders/4l/ddh6lt6x139f548hq71w4m2m0000gn/T/net.shinyfrog.bear/BearTemp.0CXvxn/Screen Shot 2563-07-17 at 10.56.48.png)
+![Screen Shot 2563-07-17 at 10.56.48](/Users/mesodiar/Library/Group Containers/9K33E3U3T4.net.shinyfrog.bear/Application Data/Local Files/Note Images/7C88C4CD-1488-475B-B3B2-F677A98B026F-3817-00006D21FA380AED/Screen Shot 2563-07-17 at 10.56.48.png)
 
 
+
+
+
+เราจะไปที่หน้าต่าง console (หรือ command prompt) กัน และรันคำสั่ง
+
+```
+python manage.py shell
+```
+
+และทำตามดังรูป
+
+
+
+![Screen Shot 2563-07-17 at 11.11.29](./attachments/Screen Shot 2563-07-17 at 11.11.29.png)
+
+เราจะลอง `Story.objects.get(id=1)` และลอง `Story.objects.get(id=2)` ดู
+จะเห็นว่าตอนนี้เรามีแค่ Story ที่ id 1 เท่านั้น
+
+![Screen Shot 2563-07-17 at 11.13.17](./attachments/Screen Shot 2563-07-17 at 11.13.17.png)
+
+
+
+-----
+
+#### 3.5 สร้างหน้ารายละเอียดของ Story กัน (Story Detail) 📖
 
 
 
@@ -321,49 +364,24 @@ def detail(request, story_id):
     return HttpResponse(f'This is story detail of {story_id}') 
 ```
 
-![Screen Shot 2563-07-17 at 11.07.40](/var/folders/4l/ddh6lt6x139f548hq71w4m2m0000gn/T/net.shinyfrog.bear/BearTemp.B9X1ZT/Screen Shot 2563-07-17 at 11.07.40.png)
 
 
+
+
+![Screen Shot 2563-07-17 at 11.07.40](./attachments/Screen Shot 2563-07-17 at 11.07.40.png)
 
 
 
 ไม่ว่าเราจะ http://localhost:8000/stories/2 หรือ 3 หรือ 4
-เราก็จะเหมือนส่งผ่าน urls -> views
+เราก็จะเหมือนส่งผ่าน urls ไปยัง views
 มันยังเป็นการแสดงผลแบบ hardcode อยู่ ไม่ dynamic
 
 คราวนี้เราจะแสดงผลจากข้อมูลจริงๆที่มีอยู่
 
 
 
----
 
-
-
-#### 3.4 การ query ดึงข้อมูลมาดูกันหน่อย 🔍
-
-เราจะไปที่หน้าต่าง console (หรือ command prompt) กัน และรันคำสั่ง
-
-```
-python manage.py shell
-```
-
-และทำตามดังรูป
-
-
-
-![Screen Shot 2563-07-17 at 11.11.29](/var/folders/4l/ddh6lt6x139f548hq71w4m2m0000gn/T/net.shinyfrog.bear/BearTemp.GT8qta/Screen Shot 2563-07-17 at 11.11.29.png)
-
-
-
-เราจะลอง `Story.objects.get(id=1)` และลอง `Story.objects.get(id=2)` ดู
-จะเห็นว่าตอนนี้เรามีแค่ Story ที่ id 1 เท่านั้น
-
-![Screen Shot 2563-07-17 at 11.13.17](/var/folders/4l/ddh6lt6x139f548hq71w4m2m0000gn/T/net.shinyfrog.bear/BearTemp.1pBWIe/Screen Shot 2563-07-17 at 11.13.17.png)
-
-
-
-
-ถ้าเราลองกลับไปแก้ที่ไฟล views.py อีกครั้ง
+ถ้าเราลองกลับไปแก้ที่ไฟล์ views.py อีกครั้ง
 
 ```
 def detail(request, story_id):
@@ -376,16 +394,14 @@ def detail(request, story_id):
 
 
 
-![Screen Shot 2563-07-17 at 11.15.10](/var/folders/4l/ddh6lt6x139f548hq71w4m2m0000gn/T/net.shinyfrog.bear/BearTemp.Rd0FTK/Screen Shot 2563-07-17 at 11.15.10.png)
+![Screen Shot 2563-07-17 at 11.15.10](./attachments/Screen Shot 2563-07-17 at 11.15.10.png)
 
 
 
 นั้นเพราะเรามี `__str__` ใน models.py มันจึงแสดงผลแค่ title แต่เราจะแสดงผล content ด้วย
 
 
-เราจะเปลี่ยน HttpResponse เป็น render()
 
-Render() —> It’s a very common idiom to load a template, fill a context and return an  [HttpResponse](https://docs.djangoproject.com/en/3.0/ref/request-response/#django.http.HttpResponse)  object with the result of the rendered template. Django provides a shortcut. Here’s the full *index()* view, rewritten:
 
 
 
@@ -393,7 +409,7 @@ Render() —> It’s a very common idiom to load a template, fill a context and 
 
 
 
-#### 3.5 จัดระเบียบการแสดงผลด้วย Template กัน ✨
+#### 3.6 จัดระเบียบการแสดงผลด้วย Template กัน ✨
 
 ตอนนี้หน้าบ้านเรามีแค่ `This is your story detail of {story_id}` แต่ในความเป็นจริงแล้ว เว็บไซต์เราไม่ได้มีการแสดงแค่นี้ มันจะแสดงสิ่งต่างๆเยอะมากและนั่นก็คือ HTML ที่ยาวมากๆนี่เอง เราจึงต้องใช้ Template ในการจัดการแต่ละหน้าในการแสดงข้อมูลต่างๆออกมา
 
@@ -407,15 +423,17 @@ stories/templates/stories/detail.html
 
 
 
-ในขณะเดียวกัน ที่ไฟล์ views.py เราจะใช้ render()  ในการบอกว่าเราจะใช้ template ที่ชื่อว่า detail.html
+ในขณะเดียวกัน ที่ไฟล์ views.py ขั้นตอนนี้เราจะเปลี่ยน HttpResponse เป็น render()  
 
-![Screen Shot 2563-07-17 at 11.39.55](/var/folders/4l/ddh6lt6x139f548hq71w4m2m0000gn/T/net.shinyfrog.bear/BearTemp.NhbvzM/Screen Shot 2563-07-17 at 11.39.55.png)
+โดยเราจะใช้ render()  ในการบอกว่าเราจะใช้ template ที่ชื่อว่า detail.html
+
+![Screen Shot 2563-07-17 at 11.39.55](/Users/mesodiar/Library/Group Containers/9K33E3U3T4.net.shinyfrog.bear/Application Data/Local Files/Note Images/107E531B-BB51-4FC2-8A33-D58DFC0989D0-3817-00006F774A50450D/Screen Shot 2563-07-17 at 11.39.55.png)
 
 
 
 แต่เมื่อเรากลับมาที่เว็บของเรา จะพบว่าเกิด error ขึ้น
 
-![Screen Shot 2563-07-17 at 11.50.58](/var/folders/4l/ddh6lt6x139f548hq71w4m2m0000gn/T/net.shinyfrog.bear/BearTemp.Cea3o6/Screen Shot 2563-07-17 at 11.50.58.png)
+![Screen Shot 2563-07-17 at 11.50.58](/Users/mesodiar/Library/Group Containers/9K33E3U3T4.net.shinyfrog.bear/Application Data/Local Files/Note Images/94CF3313-744A-416A-8F05-B2F97A885EDD-3817-00007011596E4354/Screen Shot 2563-07-17 at 11.50.58.png)
 
 
 
@@ -432,7 +450,9 @@ def detail(request, story_id):
 
 คราวนี้เราก็จะได้หน้า story แรกมาอย่างสวยงามและไม่ติด error อีกต่อไป
 
-![Screen Shot 2563-07-17 at 11.52.10](/var/folders/4l/ddh6lt6x139f548hq71w4m2m0000gn/T/net.shinyfrog.bear/BearTemp.TdbhHR/Screen Shot 2563-07-17 at 11.52.10.png)
+![Screen Shot 2563-07-17 at 11.52.10](./attachments/Screen Shot 2563-07-17 at 11.52.10.png)
+
+
 
 ทั้งนี้เราจะกลับไปแก้ที่ template เพื่อแสดงข้อมูลต่างๆใน story เช่น ชื่อเรื่อง, ผู้แต่ง, และเนื้อหาบทความด้านใน
 
@@ -446,7 +466,7 @@ def detail(request, story_id):
 
 คราวนี้เราก็จะได้ story มาอย่างสวยงามและครบครัน
 
-![Screen Shot 2563-07-17 at 12.05.52](/var/folders/4l/ddh6lt6x139f548hq71w4m2m0000gn/T/net.shinyfrog.bear/BearTemp.DDoboi/Screen Shot 2563-07-17 at 12.05.52.png)
+![Screen Shot 2563-07-17 at 12.05.52](./attachments/Screen Shot 2563-07-17 at 12.05.52.png)
 
 
 
@@ -456,7 +476,7 @@ def detail(request, story_id):
 
 ---
 
-#### 3.6 มาทำให้หน้าเว็บเราเปลี่ยนแปลงข้อมูลโดยอัตโนมัติ (dynamic) 🦾
+#### 3.7 มาทำให้หน้าเว็บเราเปลี่ยนแปลงข้อมูลโดยอัตโนมัติ (dynamic) 🦾
 
 
 
@@ -493,7 +513,7 @@ def index(request):
 
 
 
-![TA project-38](/Users/mesodiar/Downloads/TA project-38.jpg)
+![TA project-38](./attachments/TA project-38.jpg)
 
 
 
@@ -544,9 +564,7 @@ def index(request):
 
 เราจะเห็นว่าหน้าเว็บไซต์เราสวยขึ้น
 
-![Screen Shot 2563-07-17 at 15.00.10](/var/folders/4l/ddh6lt6x139f548hq71w4m2m0000gn/T/net.shinyfrog.bear/BearTemp.GmBKyV/Screen Shot 2563-07-17 at 15.00.10.png)
-
-
+![Screen Shot 2563-07-17 at 15.00.10](./attachments/Screen Shot 2563-07-17 at 15.00.10.png)
 
 #### 4.2 เพิ่มเอกลักษณ์ของเว็บโดยใส่ css ที่เราทำขึ้นเอง 💄
 
@@ -578,11 +596,13 @@ STATICFILES_DIRS = [
 
 คราวนี้ถึงไม่ 404 แล้ว
 
-![Screen Shot 2563-07-17 at 15.05.56](/var/folders/4l/ddh6lt6x139f548hq71w4m2m0000gn/T/net.shinyfrog.bear/BearTemp.pEU36X/Screen Shot 2563-07-17 at 15.05.56.png)
+![Screen Shot 2563-07-17 at 15.05.56](./attachments/Screen Shot 2563-07-17 at 15.05.56.png)
 
 
 
-![Screen Shot 2563-07-17 at 15.06.17](/var/folders/4l/ddh6lt6x139f548hq71w4m2m0000gn/T/net.shinyfrog.bear/BearTemp.SRUsT2/Screen Shot 2563-07-17 at 15.06.17.png)
+
+
+![Screen Shot 2563-07-17 at 15.06.17](./attachments/Screen Shot 2563-07-17 at 15.06.17.png)
 
 ---
 
