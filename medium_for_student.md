@@ -769,7 +769,9 @@ Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac tu
 
 ## 4.5 เพิ่มประสิทธิภาพการแสดงผลด้วย {% block content %} 👆
 
+![TA project-39](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/TAproject-39.png)
 
+#### 
 
 base.html
 
