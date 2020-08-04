@@ -28,15 +28,15 @@
 
    4.1 เพิ่มความสวยงามด้วย Bootstrap ✨
 
-   4.2 เพิ่มเอกลักษณ์ของเว็บโดยใส่ css ที่เราทำขึ้นเอง 💄
+   4.2  เพิ่มประสิทธิภาพการแสดงผลด้วย {% block content %} 👆
 
-   4.3  เพิ่มประสิทธิภาพการแสดงผลด้วย {% block content %} 👆
+   4.3 เพิ่ม story ด้วยการกรอกแบบฟอร์ม (Forms.py) 📄
 
-   4.4 ติดตั้ง Fonts กันเถอะ 🅰️
+   4.4 เพิ่มเอกลักษณ์ของเว็บโดยใส่ css ที่เราทำขึ้นเอง 💄
 
-   4.5 แผนผังข้อมูลที่เปลี่ยนไป (models) 🛢
+   4.5 ติดตั้ง Fonts กันเถอะ 🅰️
 
-   4.6 เพิ่ม story ด้วยการกรอกแบบฟอร์ม (Forms.py) 📄
+   4.6 แผนผังข้อมูลที่เปลี่ยนไป (models) 🛢
 
 
 
@@ -630,47 +630,9 @@ It is a long established fact that a reader will be distracted by the readable c
 
 
 
-## 4.2 เพิ่มเอกลักษณ์ของเว็บโดยใส่ css ที่เราทำขึ้นเอง 💄
 
 
-
-
-
-คราวนี้เราก็สร้าง ใช้ css ใน project ของเราเองบ้าง
-
-โดยการสร้างไฟล์ css ที่  stories/static/css/story.css
-
-แล้วเราก็ใส่
-
-```
-{% load static %}
-
-<link rel="stylesheet" href="{% static 'css/story.css' %}" />
-```
-
-คราวนี้เราจะยังใช้ไม่ได้เพราะ django เรายังไม่รู้ว่าต้องไปหาไฟล์ css ที่ไหน
-ถ้าเราลอง inspect ดู
-http://localhost:8000/static/css/story.css
-
-
-```settings.py
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
-
-```
-
-คราวนี้ถึงไม่ 404 แล้ว
-
-![Screen Shot 2563-07-17 at 15.05.56](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2015.05.56.png)
-
-
-
-![Screen Shot 2563-07-17 at 15.06.17](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2015.06.17.png)
-
-
-
-## 4.3 เพิ่มประสิทธิภาพการแสดงผลด้วย {% block content %} 👆
+## 4.2 เพิ่มประสิทธิภาพการแสดงผลด้วย {% block content %} 👆
 
 ![TA project-39](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/TA%20project-39.jpg)
 
@@ -794,87 +756,7 @@ detail.html
 
 ```
 
-
-
-## 4.4 ติดตั้ง Fonts กันเถอะ 🅰️
-
-
-
-เข้า [FontCDN: A search tool for Google web fonts](https://thomaspark.co/projects/fontcdn/) แล้วเลือกฟ้อนท์ชื่อ PT serif
-
-```html
-<link href='https://fonts.googleapis.com/css?family=PT+Serif:700' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
-```
-
-
-```story.css
-h1 {
-  color: #15c4b5;
-  font-family: "PT Serif", serif;
-}
-```
-
-คราวนี้เราก็ใช้ฟ้อนท์ได้แล้ว
-
-
-
-
-
-## 4.5 แผนผังข้อมูลที่เปลี่ยนไป (models) 🛢
-
-อยากเพิ่มรูปภาพเข้ามาประกอบใน story เราต้องแก้ที่แผนผังข้อมูลใน models.py
-
-```
-image = models.ImageField(null=True, blank=True)
-```
-
-```
-python manage.py makemigrations
-```
-
-มันต้องลง Package Pillow ด้วย
-
-```
-pipenv install Pillow
-```
-
-```
-python manage.py makemigrations
- python manage.py migrate
-```
-
-
-เข้า unsplash ไป download ภาพ แล้ว upload เข้าหลังบ้าน
-
-```
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-```
-
-```
-from django.conf import settings
-from django.conf.urls.static import static
-from django.contrib import admin
-from django.urls import path, include
-
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('stories/', include('stories.urls'))
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-```
-
-สร้าง folder /media/ ด้วย
-
-แล้วย้ายรูปที่ upload ไปไว้ใน /media/ รูป.jpg
-
-
-
-
-
-## 4.6 เพิ่ม story ด้วยการกรอกแบบฟอร์ม (Forms.py) 📄
+## 4.3 เพิ่ม story ด้วยการกรอกแบบฟอร์ม (Forms.py) 📄
 
 
 
@@ -961,4 +843,204 @@ def new_story(request):
     return render(request, 'stories/new_story.html', {'form': form})
 ```
 
+
+
+## 4.4 เพิ่มเอกลักษณ์ของเว็บโดยใส่ css ที่เราทำขึ้นเอง 💄
+
+
+
+คราวนี้เราก็สร้าง ใช้ css ใน project ของเราเองบ้าง
+
+โดยการสร้างไฟล์ css ที่  stories/static/css/story.css
+
+
+
+story.css
+
+```
+h3 {
+  color: #15c4b5;
+  font-family: "PT Serif", serif;
+}
+
+.page-header,
+.page-header a {
+  background-color: #f8f6f6;
+  padding: 20px 20px 20px 50px;
+  margin-top: 0;
+  font-size: 30px;
+  font-family: "PT Serif", serif;
+  color: #000;
+}
+
+.content {
+  margin-top: 10px;
+}
+
+.card {
+  width: 600px;
+  margin-bottom: 30px;
+}
+
+```
+
+
+
+แล้วเราก็ใส่ {% load static %}  และ import ไฟล์ story.css ด้วยโค้ดด้านล่างใน base.html 
+
+```html
+{% load static %}
+
+<header>
+....
+
+<link rel="stylesheet" href="{% static 'css/story.css' %}" />  // เติมบรรทัดนี้
+
+</header>
+```
+
+คราวนี้เราจะยังใช้ไม่ได้เพราะ django เรายังไม่รู้ว่าต้องไปหาไฟล์ css ที่ไหน
+ถ้าเราลอง inspect ดูใน
+http://localhost:8000/static/css/story.css 
+
+จะพบว่าหาไฟล์นี้ไม่เจอ
+
+ดังนั้น เราจะต้องประกาศ STATICFILES_DIRS ใน settings.py
+
+
+```settings.py
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+```
+
+คราวนี้ถึงไม่ 404 แล้ว
+
+![Screen Shot 2563-07-17 at 15.05.56](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2015.05.56.png)
+
+
+
+![Screen Shot 2563-07-17 at 15.06.17](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2015.06.17.png)
+
+
+
+
+
+## 4.5 ติดตั้ง Fonts กันเถอะ 🅰️
+
+
+
+เข้า [FontCDN: A search tool for Google web fonts](https://thomaspark.co/projects/fontcdn/) แล้วเลือกฟ้อนท์ชื่อ PT serif หรือเลือกฟอนท์ที่ต้องการ
+
+และเราจะ import font นี้เข้ามาโดยใส่โค้ดด้านล่างภายใน <header> ของไฟล์ base.html
+
+```html
+<link href='https://fonts.googleapis.com/css?family=PT+Serif:700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
+```
+
+หากเราอยากใส่ฟอนท์นี้ที่ไหน ก็สามารถประกาศใน css ได้เลย
+
+```
+h1 {
+  color: #15c4b5;
+  font-family: "PT Serif", serif;  
+}
+```
+
+
+
+คราวนี้เราก็ใช้ฟ้อนท์ได้แล้ว
+
+
+
+## 4.6 แผนผังข้อมูลที่เปลี่ยนไป (models) 🛢
+
+อยากเพิ่มรูปภาพเข้ามาประกอบใน story เราต้องแก้ที่แผนผังข้อมูลใน models.py
+
+```
+image = models.ImageField(null=True, blank=True)
+```
+
+
+
+เมื่อเรามีการเปลี่ยนแปลง models.py เราจะต้องบอก Django โดยการรันคำสั่ง
+
+```
+python manage.py makemigrations
+```
+
+เราจะพบว่าต้องลง Package ที่ชื่อว่า Pillow ด้วย 
+
+```
+pipenv install Pillow
+```
+
+
+
+หลังจากที่ลง Pillow แล้ว เราก็จะสามารถ makemigrations และ migrate ได้ปกติ
+
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+
+
+
+เมื่อเรามีการเก็บรูปภาพเข้ามา เราจะต้องเพิ่ม settings ด้านล่างใน settings.py ด้วย รวมถึงต้องเติม `static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)` ในไฟล์ medium_project/urls.py อีกด้วย
+
+```
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+```
+
+```
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import path, include
+
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('stories/', include('stories.urls'))
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+```
+
+
+
+คราวนี้อย่าลืมสร้าง folder ที่ชื่อว่า /media/ ด้วย (ที่เดียวกับที่มี manage.py)
+
+พอจบขั้นตอนทั้งหมดเราก็สามารถอัพโหลดรูปเข้าไปในแต่ละบทความได้แล้ว เราอาจจะเข้า https://unsplash.com/ ไป download ภาพฟรี หรือจะเลือกรูปที่มีอยู่บนเครื่องแล้วก็ได้ สามารถ upload รูปเข้าทาง localhost:8000/admin ได้เลย
+
+
+
+หรือถ้าอยากอัพโหลดผ่าน form ให้แก้ไฟล์ forms.py 
+
+```python
+from django import forms
+
+from .models import Story
+
+class StoryForm(forms.ModelForm):
+    class Meta:
+        model = Story
+        fields = ('author', 'title', 'content', 'image')  ##เพิ่ม image เข้ามา
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 
 
