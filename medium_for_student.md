@@ -452,7 +452,46 @@ stories/templates/stories/detail.html
 
 โดยเราจะใช้ render()  ในการบอกว่าเราจะใช้ template ที่ชื่อว่า detail.html
 
-![Screen Shot 2563-07-17 at 11.39.55](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2011.39.55.png)
+
+
+```python
+from django.shortcuts import render
+from django.http import HttpResponse
+
+from stories.models import Story
+
+def index(request):
+    # stories = Story.objects.all()
+    return HttpResponse('This is your home page')
+
+def detail(request, story_id):
+    story = Story.objects.get(id=story_id)
+    # story.title + ' by ' + str(story.author) + '<br>' + story.content 
+    return render(request, 'detail.html', story)
+
+```
+
+
+
+```python
+from django.shortcuts import render
+from django.http import HttpResponse
+
+from stories.models import Story
+
+def index(request):
+    # stories = Story.objects.all()
+    return HttpResponse('This is your home page')
+
+def detail(request, story_id):
+    story = Story.objects.get(id=story_id)
+    # story.title + ' by ' + str(story.author) + '<br>' + story.content
+    context = {'story': story}
+    return render(request, 'detail.html', context)
+
+```
+
+
 
 
 
@@ -524,6 +563,12 @@ def index(request):
     <li><a href="{% url 'detail' story.id %}">{{ story }}</a></li>
 {% endfor %}
 </ul>
+```
+
+```
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+
 ```
 
 
