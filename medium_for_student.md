@@ -473,7 +473,15 @@ def detail(request, story_id):
 
 
 
-```python
+แต่เมื่อเรากลับมาที่เว็บของเรา จะพบว่าเกิด error ขึ้น
+
+![Screen Shot 2563-07-17 at 11.50.58](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2011.50.58.png)
+
+
+
+เราต้อง ส่ง story ในรูปแบบของ dictionary อันนี้เป็นสิ่งที่เราเรียกว่า **context**
+
+```
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -489,27 +497,6 @@ def detail(request, story_id):
     context = {'story': story}
     return render(request, 'detail.html', context)
 
-```
-
-
-
-
-
-แต่เมื่อเรากลับมาที่เว็บของเรา จะพบว่าเกิด error ขึ้น
-
-![Screen Shot 2563-07-17 at 11.50.58](https://github.com/mesodiar/bootcamp-python-django/blob/master/attachments/Screen%20Shot%202563-07-17%20at%2011.50.58.png)
-
-
-
-เราต้อง ส่ง story ในรูปแบบของ dictionary อันนี้เป็นสิ่งที่เราเรียกว่า **context**
-
-```
-def detail(request, story_id):
-    story = Story.objects.get(id=story_id)
-
-    context = {'story': story}
-    
-    return render(request, 'detail.html', context)
 ```
 
 คราวนี้เราก็จะได้หน้า story แรกมาอย่างสวยงามและไม่ติด error อีกต่อไป
