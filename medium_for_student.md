@@ -509,7 +509,7 @@ def detail(request, story_id):
 
     context = {'story': story}
     
-    return render(request, 'stories/detail.html', context)
+    return render(request, 'detail.html', context)
 ```
 
 คราวนี้เราก็จะได้หน้า story แรกมาอย่างสวยงามและไม่ติด error อีกต่อไป
@@ -545,7 +545,7 @@ def detail(request, story_id):
 def index(request):
     stories = Story.objects.all()    
     context = {'stories': stories}
-    return render(request, 'stories/index.html', context)
+    return render(request, 'index.html', context)
 
 ```
 
@@ -687,7 +687,110 @@ base.html
 detail.html
 
 ```
-{% extends 'stories/base.html' %}
+{% extends 'base.html' %}
+
+```
+
+
+
+ปรับหน้าตาให้สวยงามขึ้นด้วย Bootstrap
+
+ไฟล์ base.html
+
+```
+##{% load static %}
+
+<html>
+  <header>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+  </header>
+  <body>
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-2"></div>
+        <div class="col-md-auto">
+          <div class="content">
+            {% block content %} {% endblock %}
+          </div>
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+    </div>
+  </body>
+</html>
+
+```
+
+
+
+ไฟล์ index.html
+
+```python
+{% extends 'base.html' %} 
+
+{% block content %} 
+{% for story in stories %}
+<div class="card shadow p-3 mb-5 bg-white rounded">
+  {% if story.image %}
+  <img
+    src="{{ MEDIA_URL }}{{ story.image.url }}"
+    class="card-img-top"
+    alt="..."
+  />
+  {% endif %}
+  <div class="card-body">
+    <a href="{% url 'detail' story.id %}"><h3>{{ story.title }}</h3></a>
+    <h6 class="card-subtitle mb-2 text-muted">{{ story.author }}</h6>
+    <p>{{ story.content }}</p>
+  </div>
+</div>
+{% endfor %} 
+{% endblock %}
+
+```
+
+
+
+ไฟล์ detail.html
+
+```python
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="content">
+  {% if story.image %}
+  <img
+    src="{{ MEDIA_URL }}{{story.image.url}}"
+    class="card-img-top"
+    alt="..."
+  />
+  {% endif %}
+
+  <h3>{{ story.title }} by {{ story.author }}</h3>
+  <p>{{ story.content }}</p>
+</div>
+{% endblock %}
 
 ```
 
@@ -777,15 +880,39 @@ urlpatterns = [
 
 คราวนี้เราเป็น admin เราเลยมีสิทธิ์เพิ่ม story ได้ แต่จุดมุ่งหมายคือเราจะให้คนทั่วไปเขาสามารถสร้าง story ได้เอง เพราะหน้า admin จะให้แค่ คนที่เป็น admin เข้าได้เท่านั้น
 
-```	views.py
+
+
+ไฟล์ Urls.py
+
+```python
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index'),
+    path('stories/<int:story_id>/', views.detail, name='detail'),
+    path('new-story/', views.new_story, name='new_story'),  ## Add this line
+]
+
+
+```
+
+
+
+ไฟล์ views.py
+
+```	python
+from .forms import StoryForm
+
 def new_story(request):
     form = StoryForm()
-    return render(request, 'stories/new_story.html', {'form': form})
+    return render(request, 'new_story.html', {'form': form})
 ```
 
 เราจึงต้องทำ form.py
 
-```forms.py
+```python
 from django import forms
 
 from .models import Story
@@ -793,22 +920,35 @@ from .models import Story
 class StoryForm(forms.ModelForm):
     class Meta:
         model = Story
-        fields = ('author', 'title', 'content', 'image')
+        fields = ('author', 'title', 'content')
 ```
 
-```new_story.html
-{% extends 'stories/base.html' %}
+
+
+ไฟล์ new_story.html
+
+```python
+{% extends 'base.html' %}
 
 {% block content %}
     <h2>New Story</h2>
-    <form method="POST" class="post-form">{% csrf_token %}
+    <form method="POST" class="post-form">
+    {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-dark">Save</button>
     </form>
 {% endblock %}
 ```
 
-```
+
+
+แต่จะยังกด save ข้อมูลจาก form ไม่ได้
+
+เราจะแก้ให้เป็น code ข้างล่างดังนี้
+
+```python
+from django.shortcuts import render, redirect
+
 def new_story(request):
     if request.method == "POST":
         form = StoryForm(request.POST, request.FILES)
